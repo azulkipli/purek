@@ -26,7 +26,11 @@ Route.group(() => {
   Route.get("users", "UserController.list");
   Route.get("links", "LinkController.list");
 }).prefix(prfx);
-// route for anonymous user without throttle
+
+Route.group(() => {
+  Route.post("add", "ClickController.add");
+}).prefix(prfx + "/click");
+
 Route.group(() => {
   Route.post("add", "LinkController.add");
   Route.post("edit", "LinkController.edit");
