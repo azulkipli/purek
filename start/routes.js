@@ -18,7 +18,7 @@ const Route = use("Route");
 const prfx = "api/v1";
 
 Route.get("/", () => {
-  return { app: "AdonisJS auth" };
+  return { app: "Purek API", version: "v0.1.0" };
 });
 
 // route for anonymous user without throttle
