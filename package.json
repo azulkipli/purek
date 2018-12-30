@@ -1,0 +1,46 @@
+{
+  "name": "adonis-api-app",
+  "version": "4.1.0",
+  "adonis-version": "4.1.0",
+  "description": "Adonisjs boilerplate for API server with pre-configured JWT",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node ace test",
+    "silent-start": "ENV_SILENT=true node server.js",
+    "silent-migrate": "ENV_SILENT=true node ace migration:run --force",
+    "silent-seed": "ENV_SILENT=true node ace seed --force"
+  },
+  "keywords": [
+    "adonisjs",
+    "adonis-app"
+  ],
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@adonisjs/ace": "^5.0.8",
+    "@adonisjs/auth": "^3.0.7",
+    "@adonisjs/bodyparser": "^2.0.5",
+    "@adonisjs/cors": "^1.0.7",
+    "@adonisjs/fold": "^4.0.9",
+    "@adonisjs/framework": "^5.0.9",
+    "@adonisjs/generic-exceptions": "^1.0.0",
+    "@adonisjs/ignitor": "^2.0.6",
+    "@adonisjs/lucid": "^5.0.4",
+    "@adonisjs/validator": "^4.0.7",
+    "@adonisjs/vow": "^1.0.17",
+    "adonis-cache": "^0.3.2",
+    "adonis-throttle-requests": "^1.0.5",
+    "mysql": "^2.15.0",
+    "sqlite3": "^4.0.2",
+    "url-parse": "^1.4.4"
+  },
+  "devDependencies": {},
+  "autoload": {
+    "App": "./app"
+  },
+  "engines": {
+    "node": "8.5.0"
+  }
+}
