@@ -1,4 +1,4 @@
 // Procfile
 
-release: ENV_SILENT=true node ace migration:run --force && node ace seed --files="UserSeeder.js" && node ace seed --files="LinkSeeder.js" 
+release: ENV_SILENT=true node ace migration:run --force && ENV_SILENT=true node ace seed --files="UserSeeder.js" && ENV_SILENT=true node ace seed --files="LinkSeeder.js" 
 web: ENV_SILENT=true npm start
