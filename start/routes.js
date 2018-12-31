@@ -47,6 +47,7 @@ Route.group(() => {
   Route.get("users", "UserController.list");
   Route.get("links", "LinkController.list");
   Route.post("seed_all", "SeedController.seed_all");
+  Route.post("empty_all", "SeedController.empty_all");
 }).prefix(prfx);
 
 // Mix route for authorized user
@@ -55,7 +56,7 @@ Route.group(() => {
   Route.get("my_profile", "UserController.my_profile");
   Route.post("logout", "AuthController.revokeToken");
   Route.post("revoke_token", "AuthController.revokeToken");
-  // Route.post("seed_all", "SeedController.seed_all");
+  // Route.post("empty_all", "SeedController.empty_all");
 })
   .prefix(prfx)
   .middleware("auth");
