@@ -5,7 +5,8 @@ const User = use("App/Models/User");
 const { validate, validateAll } = use("Validator");
 
 // mode modules
-const chance = require("chance");
+const Chance = require("chance");
+const chance = new Chance();
 
 class LinkController {
   // list link paginate & eager load
@@ -19,8 +20,10 @@ class LinkController {
     const user = await auth.getUser();
     console.log("user.id", user.id);
     // lazy eager load links
-    const links = await Link.query().where('user_id',user.id).fetch();
-    console.log('links', links);
+    const links = await Link.query()
+      .where("user_id", user.id)
+      .fetch();
+    console.log("links", links);
     response.status(200).send(links);
   }
 

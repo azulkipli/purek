@@ -21,19 +21,19 @@ Route.get("/", () => {
   return { app: "Purek API", version: "v0.1.0" };
 });
 
-// route for anonymous user without throttle
+// Click
 Route.group(() => {
-  Route.get("users", "UserController.list");
-  Route.get("links", "LinkController.list");
-}).prefix(prfx);
-// route for anonymous user without throttle
+  Route.post("add", "ClickController.add");
+}).prefix(prfx + "/click");
+
+// Link
 Route.group(() => {
   Route.post("add", "LinkController.add");
   Route.post("edit", "LinkController.edit");
   Route.post("delete", "LinkController.delete");
 }).prefix(prfx + "/link");
 
-// route for anonymous user
+// Mix route for anonymous user throttle
 Route.group(() => {
   Route.post("register", "AuthController.register");
   Route.post("login", "AuthController.login");
@@ -42,12 +42,20 @@ Route.group(() => {
 }).prefix(prfx);
 // .middleware("throttle:1,1");
 
-// route for authorized user
+// Mix route for anonymous user without throttle
+Route.group(() => {
+  Route.get("users", "UserController.list");
+  Route.get("links", "LinkController.list");
+  Route.post("seed_all", "SeedController.seed_all");
+}).prefix(prfx);
+
+// Mix route for authorized user
 Route.group(() => {
   Route.get("my_links", "LinkController.my_links");
   Route.get("my_profile", "UserController.my_profile");
   Route.post("logout", "AuthController.revokeToken");
   Route.post("revoke_token", "AuthController.revokeToken");
+  // Route.post("seed_all", "SeedController.seed_all");
 })
   .prefix(prfx)
   .middleware("auth");

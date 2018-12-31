@@ -14,7 +14,7 @@ const Factory = use("Factory");
 const Link = use("App/Models/Link");
 
 class LinkSeeder {
-  async run() {
+  static async run() {
     const link1 = new Link();
 
     link1.long_url =
@@ -25,15 +25,18 @@ class LinkSeeder {
 
     await link1.save();
 
-    Factory.blueprint("App/Models/Link", faker => {
-      return {
-        long_url: faker.avatar(),
-        short_url: faker.string({ pool: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789", length: 6 }),
-        is_custom: faker.bool(),
-        user_id: faker.integer({ min: 1, max: 8 }),
-        ip: faker.ip()
-      };
-    });
+    // Factory.blueprint("App/Models/Link", faker => {
+    //   return {
+    //     long_url: faker.avatar(),
+    //     short_url: faker.string({
+    //       pool: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789",
+    //       length: 6
+    //     }),
+    //     is_custom: faker.bool(),
+    //     user_id: faker.integer({ min: 1, max: 8 }),
+    //     ip: faker.ip()
+    //   };
+    // });
 
     await Factory.model("App/Models/Link").createMany(550);
   }
