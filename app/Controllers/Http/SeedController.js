@@ -42,8 +42,6 @@ class SeedController {
       "link_data_count"
     ]);
 
-    // return { rahasia, user_data_count, link_data_count };
-
     const user_count = parseInt(user_data_count);
     const link_count = parseInt(link_data_count);
 
@@ -56,7 +54,7 @@ class SeedController {
       if (user === null && link === null && click === null) {
         let users_data = [];
         let links_data = [];
-        let clicksData = [];
+        // let click_data = [];
         // generate users_data
         for (let i = 1; i <= user_count; i++) {
           const fName = chance.first();
@@ -87,12 +85,12 @@ class SeedController {
         // save links_data
         const created_links = await Link.createMany(links_data);
         // return response
-        return { success_msg: "User seeded", created_users, created_links };
+        return { success_msg: "Table seeded", created_users, created_links };
       } else {
-        response.status(400).send("table has records");
+        response.status(400).send("Table has records");
       }
     } else {
-      response.status(400).send("no access allowed");
+      response.status(401).send("No access allowed");
     }
   }
 }
