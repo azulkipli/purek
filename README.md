@@ -85,17 +85,21 @@ After all preparation success we can run dev server with command
 adonis serve --dev
 ```
 
-Open base URL of API on web browser or POSTMAN: [http://localhost:3232](http://localhost:3232)
+Open base URL of API on web browser or POSTMAN: [http://localhost:3333](http://localhost:3333)
 
-Example output of : [http://localhost:3232](http://localhost:3232)
+Example output of : [http://localhost:3333](http://localhost:3333)
 
 ```json
+// 20181231191421
+// https://purek.herokuapp.com/
+
 {
-  "app": "AdonisJS auth"
+  "app": "Purek API",
+  "version": "v0.1.0"
 }
 ```
 
-Example output of : [http://localhost:3232](http://localhost:3232)
+Example output of : [http://localhost:3333](http://localhost:3333)
 
 ```json
 [

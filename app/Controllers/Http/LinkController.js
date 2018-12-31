@@ -1,8 +1,8 @@
 "use strict";
 
 const Link = use("App/Models/Link");
-const User = use("App/Models/User");
-const { validate, validateAll } = use("Validator");
+const { validateAll } = use("Validator");
+const Encryption = use("Encryption");
 
 // mode modules
 const Chance = require("chance");
@@ -13,6 +13,24 @@ class LinkController {
   async list({ request, response, auth }) {
     const links = await Link.all();
     response.status(200).send(links);
+  }
+
+  async extract({ params, response }) {
+    const short_url = params.short_url;
+    let link = await Link.query().where("short_url", short_url);
+    response.status(200).send(link);
+  }
+
+  async detail({ params, response }) {
+    const short_url = params.short_url;
+    let link = await Link.query()
+      .where("short_url", short_url)
+      .first();
+    // let linkWithID = await Link.find(link.id);
+    console.log("link", link);
+    // console.log("linkWithID", linkWithID);
+    const clicks = await link.clicks().fetch();
+    response.status(200).send(Object.assign(link, { clicks: clicks }));
   }
 
   // show current user's links

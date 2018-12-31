@@ -18,7 +18,13 @@ class User extends Model {
     });
   }
 
-  /* Hide some field here */
+  /**
+   * Hide some fields here
+   *
+   * @readonly
+   * @static
+   * @memberof User
+   */
   static get hidden() {
     return ["password"];
   }
@@ -37,7 +43,12 @@ class User extends Model {
     return this.hasMany("App/Models/Token");
   }
 
-  /* return user's links */
+  /**
+   * return user's links
+   *
+   * @returns
+   * @memberof User
+   */
   links() {
     return this.hasMany("App/Models/Link");
   }
