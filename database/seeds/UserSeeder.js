@@ -14,7 +14,7 @@ const Factory = use("Factory");
 const User = use("App/Models/User");
 
 class UserSeeder {
-  async run() {
+  static async run() {
     const user1 = new User();
 
     user1.user_name = "user1";
