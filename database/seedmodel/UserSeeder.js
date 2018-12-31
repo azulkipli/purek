@@ -25,16 +25,16 @@ class UserSeeder {
 
     await user1.save();
 
-    Factory.blueprint("App/Models/User", faker => {
-      const fname = faker.first();
-      return {
-        user_name: fname.toLowerCase(),
-        full_name: fname + " " + faker.last(),
-        mobile_phone: faker.phone({ mobile: true }),
-        email: faker.email(),
-        password: faker.ip()
-      };
-    });
+    // Factory.blueprint("App/Models/User", faker => {
+    //   const fname = faker.first();
+    //   return {
+    //     user_name: fname.toLowerCase(),
+    //     full_name: fname + " " + faker.last(),
+    //     mobile_phone: faker.phone({ mobile: true }),
+    //     email: faker.email(),
+    //     password: faker.ip()
+    //   };
+    // });
 
     await Factory.model("App/Models/User").createMany(7);
   }

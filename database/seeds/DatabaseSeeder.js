@@ -1,7 +1,7 @@
 "use strict";
 
-const UserSeeder = require("./UserSeeder");
-const LinkSeeder = require("./LinkSeeder");
+const UserSeeder = require("../seedmodel/UserSeeder");
+const LinkSeeder = require("../seedmodel/LinkSeeder");
 
 class DatabaseSeeder {
   async run() {
