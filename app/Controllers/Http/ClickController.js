@@ -36,6 +36,7 @@ class ClickController {
       console.log("headers", headers);
       let check_ip = "";
       let link_id = 0;
+      let link_clicks = 0;
 
       try {
         // check link clicked
@@ -44,6 +45,7 @@ class ClickController {
           .first();
 
         link_id = link.id;
+        link_clicks = link.clicks;
 
         if (req_ip === "127.0.0.1") check_ip = link.ip;
 
@@ -62,7 +64,11 @@ class ClickController {
           const ipCountry = ip_ToCountry.name;
           Object.assign(click, { country: ipCountry });
         }
-        // const create_click = await Click.create(click);
+        const create_click = await Click.create(click);
+        const update_link_click = await Link.query()
+          .where("id", link_id)
+          .update({ clicks: link_clicks + 1 });
+        // send response
         response.status(200).send({ success_msg: "Click URL success.", click: click });
       } catch (error) {
         response.status(400).send({
