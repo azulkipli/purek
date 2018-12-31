@@ -7,8 +7,8 @@ class ClicksSchema extends Schema {
     this.create("clicks", table => {
       table.increments();
       table.string("ip").index("ip");
-      table.string("country").nullable();
-      table.string("referer").nullable();
+      table.string("country").defaultTo("");
+      table.string("referer").defaultTo("");
       table
         .string("referer_host")
         .index("referer_host")
@@ -21,7 +21,7 @@ class ClicksSchema extends Schema {
       table
         .foreign("link_id")
         .references("id")
-        .on("links")
+        .inTable("links")
         .onDelete("cascade");
       table.timestamps();
     });

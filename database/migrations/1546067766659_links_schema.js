@@ -13,8 +13,8 @@ class LinksSchema extends Schema {
       table.longText("long_url").notNullable();
       table.string("ip").index("ip");
       table
-        .integer("clicks")
-        .index("clicks")
+        .integer("click_count")
+        .index("click_count")
         .default(0);
       table.boolean("is_disabled").default(0);
       table.boolean("is_custom").default(0);

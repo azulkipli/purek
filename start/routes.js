@@ -21,6 +21,9 @@ Route.get("/", () => {
   return { app: "Purek API", version: "v0.1.0" };
 });
 
+Route.get("/:short_url", "LinkController.extract");
+Route.get("link/:short_url", "LinkController.detail");
+
 // Click
 Route.group(() => {
   Route.post("add", "ClickController.add");
@@ -28,6 +31,8 @@ Route.group(() => {
 
 // Link
 Route.group(() => {
+  Route.get("/:short_url", "LinkController.extract");
+  Route.get("link/:short_url", "LinkController.detail");
   Route.post("add", "LinkController.add");
   Route.post("edit", "LinkController.edit");
   Route.post("delete", "LinkController.delete");

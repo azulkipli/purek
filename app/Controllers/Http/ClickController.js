@@ -45,7 +45,7 @@ class ClickController {
           .first();
 
         link_id = link.id;
-        link_clicks = link.clicks;
+        link_clicks = link.click_count;
 
         if (req_ip === "127.0.0.1") check_ip = link.ip;
 
@@ -64,12 +64,14 @@ class ClickController {
           const ipCountry = ip_ToCountry.name;
           Object.assign(click, { country: ipCountry });
         }
-        const create_click = await Click.create(click);
+        const created_click = await Click.create(click);
         const update_link_click = await Link.query()
           .where("id", link_id)
-          .update({ clicks: link_clicks + 1 });
+          .update({ click_count: link_clicks + 1 });
         // send response
-        response.status(200).send({ success_msg: "Click URL success.", click: click });
+        response
+          .status(200)
+          .send({ success_msg: "Click URL success.", created_click, update_link_click });
       } catch (error) {
         response.status(400).send({
           error_msg: error.toString()
