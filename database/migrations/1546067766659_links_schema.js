@@ -11,7 +11,7 @@ class LinksSchema extends Schema {
         .notNullable()
         .unique();
       table.longText("long_url").notNullable();
-      table.string("ip").index("ip");
+      table.string("ip");
       table
         .integer("click_count")
         .index("click_count")
